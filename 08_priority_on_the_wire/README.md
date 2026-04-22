@@ -25,7 +25,7 @@ Critical failures should have a clean line through the network. Lower-value even
 
 Topic design is part of the model.
 
-In this chapter, `SignalNetwork.PriorityRouter` sends every surviving signal to:
+In this chapter, `SignalNetwork.Network.PriorityRouter` sends every surviving signal to:
 
 - its domain topic, such as `"trade:shipment-17"`
 - a priority topic, such as `"priority:high"`
@@ -36,7 +36,7 @@ That lets a consumer subscribe by business area, by urgency, or by both.
 
 This lesson keeps the storm gate and adds:
 
-- `SignalNetwork.PriorityRouter`
+- `SignalNetwork.Network.PriorityRouter`
 - `SignalNetwork.priority_topic/1`
 - `SignalNetwork.listen_priority/1`
 
@@ -46,8 +46,8 @@ The router becomes the one place that decides how urgency appears on the wire.
 
 The priority routing path lives in:
 
-- [`lib/signal_network_priority_router.ex`](./lib/signal_network_priority_router.ex)
-- [`lib/signal_network_storm_gate.ex`](./lib/signal_network_storm_gate.ex)
+- [`lib/network/priority_router.ex`](./lib/network/priority_router.ex)
+- [`lib/network/storm_gate.ex`](./lib/network/storm_gate.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 
 The router is intentionally simple:

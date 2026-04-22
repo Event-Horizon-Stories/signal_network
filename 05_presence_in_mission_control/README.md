@@ -43,7 +43,7 @@ That distinction matters. Presence is not one more event type. It is shared memb
 
 This lesson keeps the channel from chapter 4 and adds:
 
-- `SignalNetwork.Presence`
+- `SignalNetwork.Web.Presence`
 - operator tracking on channel join
 - system tracking through `SignalNetwork.track_system/2`
 - helper functions for `operators_online/0` and `systems_online/0`
@@ -52,15 +52,15 @@ This lesson keeps the channel from chapter 4 and adds:
 
 The presence layer lives in:
 
-- [`lib/signal_network_presence.ex`](./lib/signal_network_presence.ex)
-- [`lib/signal_network_operator_channel.ex`](./lib/signal_network_operator_channel.ex)
+- [`lib/web/presence.ex`](./lib/web/presence.ex)
+- [`lib/web/operator_channel.ex`](./lib/web/operator_channel.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 
 The important move happens after join:
 
 ```elixir
 {:ok, _meta} =
-  SignalNetwork.Presence.track(
+  SignalNetwork.Web.Presence.track(
     self(),
     socket.topic,
     socket.assigns.operator,

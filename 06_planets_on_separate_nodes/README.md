@@ -38,7 +38,7 @@ The consumers above that layer do not care where the signal originated. They onl
 This lesson keeps chapters 1 through 5 intact and adds:
 
 - two planet-local PubSub servers
-- `SignalNetwork.PlanetRelay`
+- `SignalNetwork.Network.PlanetRelay`
 - `SignalNetwork.announce_from_planet/2`
 - a failure simulation through `SignalNetwork.stop_planet/1`
 
@@ -46,8 +46,8 @@ This lesson keeps chapters 1 through 5 intact and adds:
 
 The clustering layer lives in:
 
-- [`lib/signal_network_planet_relay.ex`](./lib/signal_network_planet_relay.ex)
-- [`lib/signal_network/application.ex`](./lib/signal_network/application.ex)
+- [`lib/network/planet_relay.ex`](./lib/network/planet_relay.ex)
+- [`lib/runtime/application.ex`](./lib/runtime/application.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 
 The relay only needs to bridge one message shape:

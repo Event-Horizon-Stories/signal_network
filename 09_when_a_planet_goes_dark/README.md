@@ -37,14 +37,14 @@ PubSub cannot:
 - replay the signals a disconnected subscriber never saw
 - reconstruct payloads that were never persisted anywhere else
 
-`SignalNetwork.PartitionTracker` makes that limitation visible by tracking sequence gaps instead of pretending the wire is durable.
+`SignalNetwork.Network.PartitionTracker` makes that limitation visible by tracking sequence gaps instead of pretending the wire is durable.
 
 ## What We're Building
 
 This lesson keeps the priority router and adds:
 
-- an optional `sequence` field on `SignalNetwork.Signal`
-- `SignalNetwork.PartitionTracker`
+- an optional `sequence` field on `SignalNetwork.Signals.Signal`
+- `SignalNetwork.Network.PartitionTracker`
 - `SignalNetwork.gaps/0`
 
 That is enough to detect missing delivery without yet solving it.
@@ -53,8 +53,8 @@ That is enough to detect missing delivery without yet solving it.
 
 The gap detection lives in:
 
-- [`lib/signal_network_signal.ex`](./lib/signal_network_signal.ex)
-- [`lib/signal_network_partition_tracker.ex`](./lib/signal_network_partition_tracker.ex)
+- [`lib/signals/signal.ex`](./lib/signals/signal.ex)
+- [`lib/network/partition_tracker.ex`](./lib/network/partition_tracker.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 
 The crucial branch is the reconnect gap:

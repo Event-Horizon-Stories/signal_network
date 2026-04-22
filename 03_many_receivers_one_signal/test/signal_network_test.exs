@@ -25,7 +25,7 @@ defmodule SignalNetworkTest do
         payload: %{status: "delayed", reason: "solar winds", minutes: 42}
       })
 
-    assert_receive %SignalNetwork.Signal{event: :shipment_delayed}
+    assert_receive %SignalNetwork.Signals.Signal{event: :shipment_delayed}
     assert SignalNetwork.dashboard_snapshot()["trade:shipment-17"] == signal
     assert [^signal] = SignalNetwork.alerts()
     assert SignalNetwork.analytics() == %{shipment_delayed: 1}

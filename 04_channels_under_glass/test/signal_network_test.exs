@@ -4,7 +4,7 @@ defmodule SignalNetworkTest do
 
   import Phoenix.ChannelTest
 
-  @endpoint SignalNetwork.Endpoint
+  @endpoint SignalNetwork.Web.Endpoint
 
   setup do
     SignalNetwork.reset_runtime!()
@@ -20,9 +20,9 @@ defmodule SignalNetworkTest do
 
   test "the channel pushes a snapshot on join and live signals afterwards" do
     {:ok, _, socket} =
-      SignalNetwork.UserSocket
+      SignalNetwork.Web.UserSocket
       |> socket("operator-1", %{})
-      |> subscribe_and_join(SignalNetwork.OperatorChannel, SignalNetwork.channel_topic(), %{
+      |> subscribe_and_join(SignalNetwork.Web.OperatorChannel, SignalNetwork.channel_topic(), %{
         "operator" => "navy"
       })
 

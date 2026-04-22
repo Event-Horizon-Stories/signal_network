@@ -4,7 +4,7 @@ defmodule SignalNetworkTest do
 
   import Phoenix.ChannelTest
 
-  @endpoint SignalNetwork.Endpoint
+  @endpoint SignalNetwork.Web.Endpoint
 
   setup do
     SignalNetwork.reset_runtime!()
@@ -23,8 +23,8 @@ defmodule SignalNetworkTest do
       SignalNetwork.track_system("mars-colony-core", %{kind: "life-support", online: true})
 
     {:ok, _, _socket} =
-      socket(SignalNetwork.UserSocket, "operator-1", %{operator: "navy"})
-      |> subscribe_and_join(SignalNetwork.OperatorChannel, SignalNetwork.channel_topic())
+      socket(SignalNetwork.Web.UserSocket, "operator-1", %{operator: "navy"})
+      |> subscribe_and_join(SignalNetwork.Web.OperatorChannel, SignalNetwork.channel_topic())
 
     assert_push("snapshot", %{latest_by_topic: %{}})
     assert_push("presence_state", %{operators: operators, systems: systems})

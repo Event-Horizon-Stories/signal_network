@@ -30,8 +30,8 @@ Phoenix Channels are not a different distribution model from PubSub. They are a 
 In this lesson:
 
 - PubSub still carries the internal signal
-- `SignalNetwork.ChannelBridge` listens to the shared bus
-- `SignalNetwork.OperatorChannel` pushes a snapshot on join
+- `SignalNetwork.Web.ChannelBridge` listens to the shared bus
+- `SignalNetwork.Web.OperatorChannel` pushes a snapshot on join
 - later signals are pushed as `"signal"` events to connected clients
 
 That is the shape you want to recognize: PubSub inside, channel at the boundary.
@@ -40,10 +40,10 @@ That is the shape you want to recognize: PubSub inside, channel at the boundary.
 
 This lesson keeps everything from chapter 3 and adds:
 
-- `SignalNetwork.Endpoint`
-- `SignalNetwork.UserSocket`
-- `SignalNetwork.OperatorChannel`
-- `SignalNetwork.ChannelBridge`
+- `SignalNetwork.Web.Endpoint`
+- `SignalNetwork.Web.UserSocket`
+- `SignalNetwork.Web.OperatorChannel`
+- `SignalNetwork.Web.ChannelBridge`
 
 The producers still call `SignalNetwork.announce/1`. Only the outer surface changes.
 
@@ -51,9 +51,9 @@ The producers still call `SignalNetwork.announce/1`. Only the outer surface chan
 
 The channel bridge and join path live in:
 
-- [`lib/signal_network_channel_bridge.ex`](./lib/signal_network_channel_bridge.ex)
-- [`lib/signal_network_operator_channel.ex`](./lib/signal_network_operator_channel.ex)
-- [`lib/signal_network_user_socket.ex`](./lib/signal_network_user_socket.ex)
+- [`lib/web/channel_bridge.ex`](./lib/web/channel_bridge.ex)
+- [`lib/web/operator_channel.ex`](./lib/web/operator_channel.ex)
+- [`lib/web/user_socket.ex`](./lib/web/user_socket.ex)
 - [`test/signal_network_test.exs`](./test/signal_network_test.exs)
 
 The join callback sends the current state immediately:
