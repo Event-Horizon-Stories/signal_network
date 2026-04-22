@@ -25,7 +25,7 @@ defmodule SignalNetworkTest do
         payload: %{sector: "reactor-ring", variance: 12}
       })
 
-    assert_receive %SignalNetwork.Signal{event: :reactor_unstable} = received
+    assert_receive %SignalNetwork.Signals.Signal{event: :reactor_unstable} = received
     assert received == signal
   end
 

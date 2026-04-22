@@ -11,7 +11,7 @@ defmodule SignalNetwork do
   - the dashboard pays the cost even when nothing changed
   """
 
-  alias SignalNetwork.{Signal, World}
+  alias SignalNetwork.{Signals.Signal, Signals.World}
 
   @doc """
   Builds a fresh world with a few known sources already transmitting.
@@ -40,7 +40,7 @@ defmodule SignalNetwork do
       iex> snapshot.dashboard_id
       "ops"
   """
-  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Snapshot.t()
+  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Signals.Snapshot.t()
   def poll_dashboard(world, opts \\ []) do
     dashboard_id = Keyword.get(opts, :dashboard_id, "mission-control")
     World.poll_dashboard(world, dashboard_id)

@@ -34,14 +34,14 @@ This chapter introduces the two core PubSub operations:
 
 The producer does not know who is listening. The consumer does not know who sent the event. They only agree on topic names and message shape.
 
-In this lesson, `SignalNetwork.announce/1` broadcasts a `%SignalNetwork.Signal{}` to both its domain topic and a shared `"signals:all"` topic. The control room subscribes once and keeps an always-live projection.
+In this lesson, `SignalNetwork.announce/1` broadcasts a `%SignalNetwork.Signals.Signal{}` to both its domain topic and a shared `"signals:all"` topic. The control room subscribes once and keeps an always-live projection.
 
 ## What We're Building
 
 This lesson adds:
 
 - a real `Phoenix.PubSub` server
-- a `SignalNetwork.ControlRoom` GenServer that subscribes to every signal
+- a `SignalNetwork.Consumers.ControlRoom` GenServer that subscribes to every signal
 - `SignalNetwork.listen/1` for consumers
 - `SignalNetwork.announce/1` for producers
 
@@ -52,8 +52,8 @@ The lesson keeps the polling code from chapter 1 intact so you can compare the o
 The new runtime layer lives in:
 
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
-- [`lib/signal_network/application.ex`](./lib/signal_network/application.ex)
-- [`lib/signal_network_control_room.ex`](./lib/signal_network_control_room.ex)
+- [`lib/runtime/application.ex`](./lib/runtime/application.ex)
+- [`lib/consumers/control_room.ex`](./lib/consumers/control_room.ex)
 
 The broadcast path is the new center of gravity:
 

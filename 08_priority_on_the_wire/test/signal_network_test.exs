@@ -34,8 +34,8 @@ defmodule SignalNetworkTest do
       priority: :high
     })
 
-    assert_receive %SignalNetwork.Signal{event: :shipment_delayed, priority: :low}
-    assert_receive %SignalNetwork.Signal{event: :reactor_failure, priority: :high}
+    assert_receive %SignalNetwork.Signals.Signal{event: :shipment_delayed, priority: :low}
+    assert_receive %SignalNetwork.Signals.Signal{event: :reactor_failure, priority: :high}
 
     assert SignalNetwork.dashboard_snapshot()["alerts:mars"].event == :reactor_failure
   end

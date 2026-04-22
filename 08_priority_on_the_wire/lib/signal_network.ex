@@ -12,7 +12,16 @@ defmodule SignalNetwork do
   """
 
   alias Phoenix.PubSub
-  alias SignalNetwork.{AlertSink, AnalyticsSink, ControlRoom, Presence, Signal, StormGate, World}
+
+  alias SignalNetwork.{
+    Consumers.AlertSink,
+    Consumers.AnalyticsSink,
+    Consumers.ControlRoom,
+    Web.Presence,
+    Signals.Signal,
+    Network.StormGate,
+    Signals.World
+  }
 
   @doc """
   Builds a fresh world with a few known sources already transmitting.
@@ -41,7 +50,7 @@ defmodule SignalNetwork do
       iex> snapshot.dashboard_id
       "ops"
   """
-  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Snapshot.t()
+  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Signals.Snapshot.t()
   def poll_dashboard(world, opts \\ []) do
     dashboard_id = Keyword.get(opts, :dashboard_id, "mission-control")
     World.poll_dashboard(world, dashboard_id)

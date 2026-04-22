@@ -39,8 +39,8 @@ That matters because it keeps the producer stable while the rest of the system e
 
 This lesson keeps the control room from chapter 2 and adds:
 
-- `SignalNetwork.AlertSink`
-- `SignalNetwork.AnalyticsSink`
+- `SignalNetwork.Consumers.AlertSink`
+- `SignalNetwork.Consumers.AnalyticsSink`
 - top-level helpers for reading alerts and analytics counters
 
 The producer still only calls `SignalNetwork.announce/1`.
@@ -49,8 +49,8 @@ The producer still only calls `SignalNetwork.announce/1`.
 
 The fan-out layer lives in:
 
-- [`lib/signal_network_alert_sink.ex`](./lib/signal_network_alert_sink.ex)
-- [`lib/signal_network_analytics_sink.ex`](./lib/signal_network_analytics_sink.ex)
+- [`lib/consumers/alert_sink.ex`](./lib/consumers/alert_sink.ex)
+- [`lib/consumers/analytics_sink.ex`](./lib/consumers/analytics_sink.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 
 The analytics sink shows the pattern clearly:

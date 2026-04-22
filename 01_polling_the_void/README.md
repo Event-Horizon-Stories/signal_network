@@ -31,7 +31,7 @@ This chapter lets that lag become visible before we try to fix it.
 
 The first PubSub lesson is that polling is the shape PubSub replaces.
 
-There is no subscription here yet. The dashboard calls `SignalNetwork.poll_dashboard/2`, and that function asks the world to reread every source before it can return a `SignalNetwork.Snapshot`.
+There is no subscription here yet. The dashboard calls `SignalNetwork.poll_dashboard/2`, and that function asks the world to reread every source before it can return a `SignalNetwork.Signals.Snapshot`.
 
 That gives us a clean baseline:
 
@@ -45,9 +45,9 @@ In the next chapter, the signal struct survives. The request path does not.
 
 This lesson creates:
 
-- a `SignalNetwork.Signal` struct for the events crossing the universe
-- a `SignalNetwork.World` struct that stores signal history
-- a `SignalNetwork.Snapshot` struct for polled dashboard views
+- a `SignalNetwork.Signals.Signal` struct for the events crossing the universe
+- a `SignalNetwork.Signals.World` struct that stores signal history
+- a `SignalNetwork.Signals.Snapshot` struct for polled dashboard views
 - a `SignalNetwork.bootstrap_story!/0` helper that demonstrates stale data directly
 
 ## The Code
@@ -55,9 +55,9 @@ This lesson creates:
 The lesson lives in:
 
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
-- [`lib/signal_network_signal.ex`](./lib/signal_network_signal.ex)
-- [`lib/signal_network_world.ex`](./lib/signal_network_world.ex)
-- [`lib/signal_network_snapshot.ex`](./lib/signal_network_snapshot.ex)
+- [`lib/signals/signal.ex`](./lib/signals/signal.ex)
+- [`lib/signals/world.ex`](./lib/signals/world.ex)
+- [`lib/signals/snapshot.ex`](./lib/signals/snapshot.ex)
 
 The core polling path is small and expensive in exactly the way we need:
 

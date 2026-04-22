@@ -27,7 +27,7 @@ This chapter introduces pressure into the system on purpose so the filtering pol
 
 PubSub is excellent at propagation. It is not automatically a backpressure strategy.
 
-If you let every signal through without a policy, bursts can starve the traffic you actually care about. This chapter puts a `SignalNetwork.StormGate` in front of the shared bus so the system can make one explicit choice:
+If you let every signal through without a policy, bursts can starve the traffic you actually care about. This chapter puts a `SignalNetwork.Network.StormGate` in front of the shared bus so the system can make one explicit choice:
 
 - low-priority chatter may be dropped
 - urgent traffic must still pass
@@ -38,7 +38,7 @@ That is not a replacement for durable queueing, but it is the first honest overl
 
 This lesson keeps the clustered relays from chapter 6 and adds:
 
-- `SignalNetwork.StormGate`
+- `SignalNetwork.Network.StormGate`
 - `SignalNetwork.dropped_signals/0`
 - routing of both direct and planet-relayed signals through the gate
 
@@ -46,9 +46,9 @@ This lesson keeps the clustered relays from chapter 6 and adds:
 
 The overload policy lives in:
 
-- [`lib/signal_network_storm_gate.ex`](./lib/signal_network_storm_gate.ex)
+- [`lib/network/storm_gate.ex`](./lib/network/storm_gate.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
-- [`lib/signal_network_planet_relay.ex`](./lib/signal_network_planet_relay.ex)
+- [`lib/network/planet_relay.ex`](./lib/network/planet_relay.ex)
 
 The key branch is the drop decision:
 

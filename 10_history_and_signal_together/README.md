@@ -45,7 +45,7 @@ That is the full picture:
 
 This final lesson keeps every earlier layer and adds:
 
-- `SignalNetwork.EventJournal`
+- `SignalNetwork.History.EventJournal`
 - `SignalNetwork.journal_signal/1`
 - `SignalNetwork.record_and_announce/1`
 - `SignalNetwork.recover_gap/1`
@@ -56,9 +56,9 @@ The signal bus still matters. It is simply no longer the only keeper of truth.
 
 The history layer lives in:
 
-- [`lib/signal_network_event_journal.ex`](./lib/signal_network_event_journal.ex)
+- [`lib/history/event_journal.ex`](./lib/history/event_journal.ex)
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
-- [`lib/signal_network_partition_tracker.ex`](./lib/signal_network_partition_tracker.ex)
+- [`lib/network/partition_tracker.ex`](./lib/network/partition_tracker.ex)
 
 The final integration path is the important one:
 

@@ -14,14 +14,14 @@ defmodule SignalNetwork do
   alias Phoenix.PubSub
 
   alias SignalNetwork.{
-    AlertSink,
-    AnalyticsSink,
-    ControlRoom,
-    PartitionTracker,
-    Presence,
-    Signal,
-    StormGate,
-    World
+    Consumers.AlertSink,
+    Consumers.AnalyticsSink,
+    Consumers.ControlRoom,
+    Network.PartitionTracker,
+    Web.Presence,
+    Signals.Signal,
+    Network.StormGate,
+    Signals.World
   }
 
   @doc """
@@ -51,7 +51,7 @@ defmodule SignalNetwork do
       iex> snapshot.dashboard_id
       "ops"
   """
-  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Snapshot.t()
+  @spec poll_dashboard(World.t(), keyword()) :: SignalNetwork.Signals.Snapshot.t()
   def poll_dashboard(world, opts \\ []) do
     dashboard_id = Keyword.get(opts, :dashboard_id, "mission-control")
     World.poll_dashboard(world, dashboard_id)
