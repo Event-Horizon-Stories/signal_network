@@ -1,0 +1,47 @@
+# Lesson 08 Livebook: Priority On The Wire
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../08_priority_on_the_wire"}
+])
+```
+
+## Subscribe By Priority
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.listen_priority(:high)
+SignalNetwork.listen_priority(:low)
+```
+
+## Emit Two Different Urgencies
+
+```elixir
+SignalNetwork.announce(%{
+  source: :trade_authority,
+  topic: "trade:shipment-17",
+  event: :shipment_delayed,
+  payload: %{status: "delayed"},
+  priority: :low
+})
+
+SignalNetwork.announce(%{
+  source: :mars_colony,
+  topic: "alerts:mars",
+  event: :reactor_failure,
+  payload: %{sector: "ring-2"},
+  priority: :high
+})
+```
+
+## Inspect The Feed You Heard
+
+```elixir
+for _ <- 1..2 do
+  receive do
+    message -> {message.event, message.priority}
+  after
+    200 -> :timeout
+  end
+end
+```

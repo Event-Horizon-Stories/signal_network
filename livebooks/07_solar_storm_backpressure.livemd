@@ -1,0 +1,44 @@
+# Lesson 07 Livebook: Solar Storm Backpressure
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../07_solar_storm_backpressure"}
+])
+```
+
+## Flood The Bus
+
+```elixir
+SignalNetwork.reset_runtime!()
+
+for minute <- 1..5 do
+  SignalNetwork.announce(%{
+    source: :orbital_ship_7,
+    topic: "trade:shipment-17",
+    event: :shipment_ping,
+    payload: %{minute: minute},
+    priority: :low
+  })
+end
+```
+
+## Send One Critical Alert
+
+```elixir
+SignalNetwork.announce(%{
+  source: :mars_colony,
+  topic: "alerts:mars",
+  event: :reactor_unstable,
+  payload: %{variance: 19},
+  priority: :high
+})
+```
+
+## Compare What Survived
+
+```elixir
+%{
+  dropped: SignalNetwork.dropped_signals(),
+  latest_alert: SignalNetwork.dashboard_snapshot()["alerts:mars"]
+}
+```

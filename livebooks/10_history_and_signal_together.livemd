@@ -1,0 +1,67 @@
+# Lesson 10 Livebook: History And Signal Together
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../10_history_and_signal_together"}
+])
+```
+
+## Record The Live Beginning
+
+```elixir
+SignalNetwork.reset_runtime!()
+
+SignalNetwork.record_and_announce(%{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :oxygen_level,
+  payload: %{percent: 94},
+  sequence: 1
+})
+
+SignalNetwork.record_and_announce(%{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :oxygen_level,
+  payload: %{percent: 92},
+  sequence: 2
+})
+```
+
+## Journal The Missing Middle
+
+```elixir
+SignalNetwork.journal_signal(%{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :oxygen_level,
+  payload: %{percent: 89},
+  sequence: 3
+})
+
+SignalNetwork.journal_signal(%{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :oxygen_level,
+  payload: %{percent: 86},
+  sequence: 4
+})
+```
+
+## Reconnect And Recover
+
+```elixir
+SignalNetwork.record_and_announce(%{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :oxygen_level,
+  payload: %{percent: 81},
+  sequence: 5
+})
+
+%{
+  gaps: SignalNetwork.gaps(),
+  recovered: SignalNetwork.recover_gap(:mars_colony),
+  live_tip: SignalNetwork.dashboard_snapshot()["telemetry:mars"]
+}
+```

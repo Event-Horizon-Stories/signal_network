@@ -1,0 +1,47 @@
+# Lesson 01 Livebook: Polling The Void
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../01_polling_the_void"}
+])
+```
+
+## Inspect The Raw World
+
+```elixir
+world = SignalNetwork.new_world()
+
+Enum.map(world.signals, fn signal ->
+  %{tick: signal.tick, source: signal.source, topic: signal.topic, event: signal.event}
+end)
+```
+
+## Capture One Snapshot
+
+```elixir
+snapshot = SignalNetwork.poll_dashboard(world, dashboard_id: "mission-control")
+
+%{
+  captured_at_tick: snapshot.captured_at_tick,
+  remote_reads: snapshot.remote_reads,
+  topics: Map.keys(snapshot.latest_by_topic)
+}
+```
+
+## Watch It Go Stale
+
+```elixir
+world =
+  SignalNetwork.emit(world, %{
+    source: :mars_colony,
+    topic: "alerts:mars",
+    event: :oxygen_low,
+    payload: %{zone: "hab-3", percent: 18},
+    priority: :high
+  })
+
+%{
+  stale_snapshot: snapshot.latest_by_topic["alerts:mars"],
+  refreshed_snapshot: SignalNetwork.poll_dashboard(world).latest_by_topic["alerts:mars"]
+}
+```
