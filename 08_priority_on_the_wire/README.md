@@ -2,7 +2,9 @@
 
 Not every signal deserves the same path.
 
-A shipment delay matters. A reactor failure matters more. Once the storm gate exists, the next honest step is to encode that difference into the topic design itself.
+The storm gate taught the network how to survive noise. This chapter teaches it how to speak more clearly even before the noise arrives. A shipment delay matters. A reactor failure matters more. Once that is true operationally, it should become true structurally as well.
+
+Once the storm gate exists, the next honest step is to encode that difference into the topic design itself.
 
 Interactive companion: [`../livebooks/08_priority_on_the_wire.livemd`](../livebooks/08_priority_on_the_wire.livemd)
 
@@ -15,11 +17,9 @@ Interactive companion: [`../livebooks/08_priority_on_the_wire.livemd`](../livebo
 
 ## The Story
 
-Mission control can survive a storm now, but it still has to listen widely to know when something catastrophic is happening.
+Mission control can survive a storm now, but it still has to listen widely to know when something catastrophic is happening. That is too blunt for a room that may only get seconds to orient itself.
 
-That is too blunt.
-
-Critical failures should have a clean line through the network. Lower-value events can still move, but they should not hide the fire.
+Critical failures should have a clean line through the network. Lower-value events can still move, but they should not hide the fire behind ordinary traffic. If urgency is real in the domain, it should be visible in the topology.
 
 ## The PubSub Concept
 

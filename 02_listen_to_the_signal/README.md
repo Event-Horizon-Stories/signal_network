@@ -2,7 +2,9 @@
 
 The network changes shape here.
 
-Mars no longer waits for mission control to ask whether the reactor is unstable. The signal leaves Mars when the condition changes, and anyone listening can react at once.
+Up to this point, mission control has been acting like the universe owes it a reply on demand. That posture does not survive contact with a living system for very long. When the reactor starts drifting, Mars should not have to wait for a dashboard refresh to become real. The signal should leave immediately, carrying the fact of the change with it.
+
+That is the first moment when the network starts to feel alive instead of observed from a distance.
 
 Interactive companion: [`../livebooks/02_listen_to_the_signal.livemd`](../livebooks/02_listen_to_the_signal.livemd)
 
@@ -15,11 +17,13 @@ Interactive companion: [`../livebooks/02_listen_to_the_signal.livemd`](../livebo
 
 ## The Story
 
-Mission control is still carrying the old polling dashboard from lesson 1, but the cost is already obvious.
+Mission control is still carrying the old polling dashboard from lesson 1, and you can already feel the strain in it. Every request asks the same scattered world to hold still long enough to be summarized. Every answer arrives with a little dust already on it.
 
 So the network changes tactics.
 
-Mars starts announcing alerts. The trade authority starts announcing shipment events. The control room stops rereading every source and starts listening for live traffic on the wire.
+Mars starts announcing alerts the moment they matter. The trade authority starts announcing shipment events as they occur instead of waiting to be queried. The control room stops rereading every source and begins listening for traffic already crossing the wire.
+
+This is the chapter where the system stops asking for permission to notice.
 
 ## The PubSub Concept
 

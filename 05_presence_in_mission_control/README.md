@@ -2,6 +2,8 @@
 
 The dashboard is live now, but a live dashboard is not the same thing as a coordinated room.
 
+A real control surface is not only made of events. It is also made of occupants, absences, handoffs, and the uneasy silence that falls when a system that should be online stops speaking. Once signals are fast enough, presence itself becomes operational data.
+
 Mission control needs to know which operators are online, and which systems are still speaking clearly enough to trust.
 
 Interactive companion: [`../livebooks/05_presence_in_mission_control.livemd`](../livebooks/05_presence_in_mission_control.livemd)
@@ -17,7 +19,9 @@ Interactive companion: [`../livebooks/05_presence_in_mission_control.livemd`](..
 
 Signals are arriving fast enough now that silence itself becomes information.
 
-If a reactor monitor drops off the wire, that matters. If the night-shift operator leaves mission control, that matters too. Presence turns absence into something the system can represent instead of something humans notice too late.
+If a reactor monitor drops off the wire, that matters before anyone reads the next metric. If the night-shift operator leaves mission control and no one else is present to take the room, that matters too. In a living network, absence has shape. Presence gives that shape a place to be recorded.
+
+This chapter turns the room itself into part of the system model.
 
 ## The PubSub Concept
 
