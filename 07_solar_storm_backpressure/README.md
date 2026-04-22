@@ -8,7 +8,7 @@ When a solar storm starts spraying low-value chatter across the wire, the contro
 
 Interactive companion: [`../livebooks/07_solar_storm_backpressure.livemd`](../livebooks/07_solar_storm_backpressure.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to add a gate in front of PubSub dispatch
 - how to drop low-priority traffic under burst pressure
@@ -21,22 +21,22 @@ The storm is not subtle. It arrives as a flood of technically accurate, operatio
 
 Meanwhile, the signal that matters most is the one the network must not lose: a reactor drifting toward failure.
 
-This chapter introduces pressure into the system on purpose so the filtering policy has something real to protect against.
+Pressure enters the system on purpose so the filtering policy has something real to protect against.
 
-## The PubSub Concept
+## Under The Hood
 
 PubSub is excellent at propagation. It is not automatically a backpressure strategy.
 
-If you let every signal through without a policy, bursts can starve the traffic you actually care about. This chapter puts a `SignalNetwork.Network.StormGate` in front of the shared bus so the system can make one explicit choice:
+If you let every signal through without a policy, bursts can starve the traffic you actually care about. `SignalNetwork.Network.StormGate` sits in front of the shared bus so the system can make one explicit choice:
 
 - low-priority chatter may be dropped
 - urgent traffic must still pass
 
-That is not a replacement for durable queueing, but it is the first honest overload policy in the series.
+That is not a replacement for durable queueing, but it is the first honest overload policy in the repository.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps the clustered relays from chapter 6 and adds:
+The clustered relays stay, and the network adds:
 
 - `SignalNetwork.Network.StormGate`
 - `SignalNetwork.dropped_signals/0`
@@ -66,7 +66,7 @@ The storm gate does not rewrite the signal. It decides whether the shared bus wi
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 07_solar_storm_backpressure
@@ -120,7 +120,7 @@ A living network is not only about propagation. It is about restraint.
 
 If you never decide what can be lost, overload will make the decision for you.
 
-## PubSub Takeaway
+## What Holds
 
 PubSub needs an overload policy around it.
 
@@ -132,6 +132,6 @@ The gate can protect the bus, but it still treats most traffic of the same prior
 
 The network needs a clearer language for urgency.
 
-## Next Lesson
+## Next Shift
 
-In lesson 8, signals start traveling on priority feeds as well as domain topics so urgent failures can cut through the network faster.
+Next, signals start traveling on priority feeds as well as domain topics so urgent failures can cut through the network faster.

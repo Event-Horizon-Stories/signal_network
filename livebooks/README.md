@@ -1,8 +1,8 @@
 # Livebook Companions
 
-These notebooks are the interactive companions for `signal_network`.
+These notebooks follow the same pressure points as `signal_network`.
 
-Open them from Livebook while the repository is checked out locally. Each notebook uses a local path dependency back to its lesson directory so the examples stay attached to the real lesson code.
+Open them from Livebook while the repository is checked out locally. Each notebook uses a local path dependency back to its chapter directory so the examples stay attached to the real lesson code.
 
 ## Setup
 
@@ -26,6 +26,6 @@ From the repo root:
 - [09_when_a_planet_goes_dark.livemd](./09_when_a_planet_goes_dark.livemd) for delivery gaps
 - [10_history_and_signal_together.livemd](./10_history_and_signal_together.livemd) for replay from the journal
 
-## Opening The Series
+## Opening The Network
 
-Start with `01_polling_the_void.livemd`, then move in order. Each notebook assumes the previous lesson's mental model still matters.
+Start with `01_polling_the_void.livemd`, then move in order. Each notebook assumes the previous chapter's mental model still matters.

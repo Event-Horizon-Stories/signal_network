@@ -11,7 +11,7 @@ This final chapter matters because the series has spent nine lessons refusing to
 
 Interactive companion: [`../livebooks/10_history_and_signal_together.livemd`](../livebooks/10_history_and_signal_together.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to add a journaled event path alongside live PubSub delivery
 - how to append signals durably without broadcasting them yet
@@ -26,7 +26,7 @@ Mission control already knows sequences `3` and `4` were missed. That knowledge 
 
 That is the final movement of the series. The network does not stop being live. It stops pretending that live is enough.
 
-## The PubSub Concept
+## Under The Hood
 
 This chapter closes the loop by refusing to ask PubSub to be something it is not.
 
@@ -41,9 +41,9 @@ That is the full picture:
 - PubSub for live reaction
 - journal for replay and audit
 
-## What We're Building
+## Network Changes
 
-This final lesson keeps every earlier layer and adds:
+Every earlier layer stays in place, and the network adds:
 
 - `SignalNetwork.History.EventJournal`
 - `SignalNetwork.journal_signal/1`
@@ -74,7 +74,7 @@ History is written first. Live delivery follows.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 10_history_and_signal_together
@@ -150,7 +150,7 @@ This is the chapter where the architecture stops arguing with reality.
 
 The wire is fast but forgetful. History is slower but durable. Together they form a trustworthy system.
 
-## PubSub Takeaway
+## What Holds
 
 PubSub is strongest when it is paired with the right neighbor.
 

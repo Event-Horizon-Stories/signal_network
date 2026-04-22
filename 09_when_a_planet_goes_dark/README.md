@@ -2,13 +2,13 @@
 
 Here the wire tells the truth about its own limits.
 
-Up to this point, the network has learned how to listen, fan out, push to clients, survive overload, and speak with clearer urgency. None of that makes the wire durable. The harshest lesson in the series is not that PubSub is weak. It is that PubSub is honest about what it is for.
+Up to this point, the network has learned how to listen, fan out, push to clients, survive overload, and speak with clearer urgency. None of that makes the wire durable. The harshest turn in the repository is not that PubSub is weak. It is that PubSub is honest about what it is for.
 
 A reconnecting planet can prove that something was missed. It cannot, by PubSub alone, recover what those missed signals were.
 
 Interactive companion: [`../livebooks/09_when_a_planet_goes_dark.livemd`](../livebooks/09_when_a_planet_goes_dark.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to tag signals with source-local sequence numbers
 - how to detect a delivery gap after a source reconnects
@@ -23,9 +23,9 @@ When it returns, the next telemetry signal carries sequence `5`. Mission control
 
 What the network still cannot do is recover those missing messages. It can measure the wound. It cannot yet heal it.
 
-## The PubSub Concept
+## Under The Hood
 
-This chapter teaches the edge of PubSub.
+The edge of PubSub becomes visible here.
 
 PubSub can:
 
@@ -39,9 +39,9 @@ PubSub cannot:
 
 `SignalNetwork.Network.PartitionTracker` makes that limitation visible by tracking sequence gaps instead of pretending the wire is durable.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps the priority router and adds:
+The priority router stays, and the network adds:
 
 - an optional `sequence` field on `SignalNetwork.Signals.Signal`
 - `SignalNetwork.Network.PartitionTracker`
@@ -69,7 +69,7 @@ The tracker records what is missing. It does not fake a recovery path.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 09_when_a_planet_goes_dark
@@ -115,7 +115,7 @@ This is the chapter where PubSub stops being mistaken for a full event history.
 
 If you need recovery, auditing, or replay, you need another system besides the wire.
 
-## PubSub Takeaway
+## What Holds
 
 PubSub is about live delivery, not durable memory.
 
@@ -127,6 +127,6 @@ Mission control can name the missing sequences now, but it still cannot read the
 
 The story needs history, not just an admission of loss.
 
-## Next Lesson
+## Next Shift
 
-In lesson 10, a journaled event path joins the live bus so the network can replay what PubSub alone could never recover.
+Next, a journaled event path joins the live bus so the network can replay what PubSub alone could never recover.

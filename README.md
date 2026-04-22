@@ -1,6 +1,6 @@
 # signal_network
 
-`signal_network` teaches PubSub by following a network that feels alive before it feels abstract.
+`signal_network` follows a network that feels alive before it feels abstract.
 
 Across Mars habitats, drifting ships, trade relays, and mission-control consoles, nothing sits still long enough to be politely requested. Oxygen levels dip. Reactors grow unstable. Shipments stall in radiation and wind. Operators sign on, vanish, and hand the room to someone else. The system does not pause so a dashboard can catch up. It keeps speaking.
 
@@ -8,7 +8,7 @@ That is the mental shift this series is built around. PubSub is not introduced h
 
 ## Interactive Companions
 
-Livebook companions for the full series live in [`livebooks/`](./livebooks/README.md).
+Livebook companions for the full network live in [`livebooks/`](./livebooks/README.md).
 
 - [`livebooks/01_polling_the_void.livemd`](./livebooks/01_polling_the_void.livemd)
 - [`livebooks/02_listen_to_the_signal.livemd`](./livebooks/02_listen_to_the_signal.livemd)
@@ -48,7 +48,7 @@ Each lesson is its own standalone Mix project, but every chapter is the next ver
 
 ## Final Inquiry Shape
 
-By the end of the series, the network has a clear layered shape:
+By the time the network can hear both the live wire and the missing past, it has a clear layered shape:
 
 ```text
 signal source
@@ -60,11 +60,11 @@ signal source
   -> event journal for replay and recovery
 ```
 
-That is the full inquiry shape of the series: live reaction in the foreground, durable history behind it, and a hard boundary between the two.
+That is the full inquiry shape of the repository: live reaction in the foreground, durable history behind it, and a hard boundary between the two.
 
-## Beyond the Series
+## Beyond This Wire
 
-The ten main chapters cover the PubSub arc most readers need:
+The ten chapters cover the PubSub arc most readers need:
 
 - polling versus listening
 - topics, broadcasts, and subscriptions
@@ -86,9 +86,9 @@ There are stronger follow-up paths if you want to keep going:
 
 ## Tooling
 
-The repo is pinned with `.tool-versions` so the lessons run against an asdf-managed Elixir and Erlang toolchain.
+The repo is pinned with `.tool-versions` so the chapters run against an asdf-managed Elixir and Erlang toolchain.
 
-Each lesson is its own Mix project. Fetch dependencies inside the lesson you want to run:
+Each chapter is its own Mix project. Fetch dependencies inside the directory you want to run:
 
 ```bash
 cd 04_channels_under_glass
@@ -107,4 +107,4 @@ For the Livebook companions, use the repo-root helper scripts:
 
 Begin with [`01_polling_the_void`](./01_polling_the_void/README.md).
 
-That lesson teaches the first hard truth of the series: if dashboards keep asking for the latest state, they are already late.
+It opens with the first hard truth of the repository: if dashboards keep asking for the latest state, they are already late.

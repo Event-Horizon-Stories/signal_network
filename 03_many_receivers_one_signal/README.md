@@ -6,7 +6,7 @@ That is when PubSub starts to feel bigger than convenience. A single event cross
 
 Interactive companion: [`../livebooks/03_many_receivers_one_signal.livemd`](../livebooks/03_many_receivers_one_signal.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how PubSub fan-out lets one event drive many reactions
 - how to keep multiple consumers independent from one another
@@ -27,17 +27,17 @@ The network should not have to know which of those reactions will occur ahead of
 
 This is where the bus starts feeling like shared infrastructure rather than a helper function.
 
-## The PubSub Concept
+## Under The Hood
 
-This chapter teaches fan-out.
+Fan-out becomes visible here.
 
 In PubSub, one broadcast can wake up any number of subscribers. The producer does not branch manually into dashboard code, alert code, and analytics code. It emits one event, and the topic does the distribution work.
 
 That matters because it keeps the producer stable while the rest of the system evolves.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps the control room from chapter 2 and adds:
+The control room stays, and the network adds:
 
 - `SignalNetwork.Consumers.AlertSink`
 - `SignalNetwork.Consumers.AnalyticsSink`
@@ -65,7 +65,7 @@ The sink does not care who emitted the event. It only cares that it arrived.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 03_many_receivers_one_signal
@@ -119,7 +119,7 @@ Fan-out is where PubSub starts to feel architectural instead of merely convenien
 
 Once many consumers can react independently, you can add new behavior without reopening the producer every time.
 
-## PubSub Takeaway
+## What Holds
 
 A producer should emit one fact once.
 
@@ -131,6 +131,6 @@ Operators still do not have a real client surface.
 
 The control room is live inside the server, but there is still no dashboard connection that can join once and receive pushes over time.
 
-## Next Lesson
+## Next Shift
 
-In lesson 4, operators join a Phoenix Channel and the control room starts pushing updates over a real-time client connection.
+Next, operators join a Phoenix Channel and the control room starts pushing updates over a real-time client connection.

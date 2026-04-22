@@ -2,13 +2,13 @@
 
 Not every signal deserves the same path.
 
-The storm gate taught the network how to survive noise. This chapter teaches it how to speak more clearly even before the noise arrives. A shipment delay matters. A reactor failure matters more. Once that is true operationally, it should become true structurally as well.
+The storm gate taught the network how to survive noise. Here, it starts speaking more clearly even before the noise arrives. A shipment delay matters. A reactor failure matters more. Once that is true operationally, it should become true structurally as well.
 
 Once the storm gate exists, the next honest step is to encode that difference into the topic design itself.
 
 Interactive companion: [`../livebooks/08_priority_on_the_wire.livemd`](../livebooks/08_priority_on_the_wire.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to route one signal onto both a domain topic and a priority feed
 - how priority topics give consumers a faster, narrower subscription surface
@@ -21,7 +21,7 @@ Mission control can survive a storm now, but it still has to listen widely to kn
 
 Critical failures should have a clean line through the network. Lower-value events can still move, but they should not hide the fire behind ordinary traffic. If urgency is real in the domain, it should be visible in the topology.
 
-## The PubSub Concept
+## Under The Hood
 
 Topic design is part of the model.
 
@@ -32,9 +32,9 @@ In this chapter, `SignalNetwork.Network.PriorityRouter` sends every surviving si
 
 That lets a consumer subscribe by business area, by urgency, or by both.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps the storm gate and adds:
+The storm gate stays, and the network adds:
 
 - `SignalNetwork.Network.PriorityRouter`
 - `SignalNetwork.priority_topic/1`
@@ -64,7 +64,7 @@ One signal, three audiences.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 08_priority_on_the_wire
@@ -124,7 +124,7 @@ PubSub topics are more than routing keys. They are part of how the system thinks
 
 A good topic scheme makes the important subscriptions obvious before you write the consumers.
 
-## PubSub Takeaway
+## What Holds
 
 Topic design is policy made visible.
 
@@ -136,6 +136,6 @@ Even a well-routed live network can still forget.
 
 If a planet disappears from the wire and returns later, PubSub alone has no memory of the signals that never arrived.
 
-## Next Lesson
+## Next Shift
 
-In lesson 9, a reconnect reveals missing sequence gaps and makes PubSub’s lack of persistence impossible to ignore.
+Next, a reconnect reveals missing sequence gaps and makes PubSub’s lack of persistence impossible to ignore.
