@@ -1,0 +1,129 @@
+# Lesson 04: Channels Under Glass
+
+Mission control finally gets a real viewing window.
+
+Operators do not refresh the dashboard anymore. They join once, and the network pushes changes as they happen.
+
+Interactive companion: [`../livebooks/04_channels_under_glass.livemd`](../livebooks/04_channels_under_glass.livemd)
+
+## What You'll Learn
+
+- how Phoenix Channels turn server-side PubSub updates into client pushes
+- how to join a topic-based operator feed
+- how to send an initial snapshot and then stream live events afterwards
+- how channels sit on top of the same PubSub bus instead of replacing it
+
+## The Story
+
+The control room is alive now, but only inside the BEAM.
+
+That is not enough. Operators need a surface they can keep open while signals fly. They need the current picture when they join, and then they need the wire to stay hot without another request cycle.
+
+So the network adds a channel under glass. The bus stays the same. The audience changes.
+
+## The PubSub Concept
+
+Phoenix Channels are not a different distribution model from PubSub. They are a client-facing edge built on top of it.
+
+In this lesson:
+
+- PubSub still carries the internal signal
+- `SignalNetwork.ChannelBridge` listens to the shared bus
+- `SignalNetwork.OperatorChannel` pushes a snapshot on join
+- later signals are pushed as `"signal"` events to connected clients
+
+That is the shape you want to recognize: PubSub inside, channel at the boundary.
+
+## What We're Building
+
+This lesson keeps everything from chapter 3 and adds:
+
+- `SignalNetwork.Endpoint`
+- `SignalNetwork.UserSocket`
+- `SignalNetwork.OperatorChannel`
+- `SignalNetwork.ChannelBridge`
+
+The producers still call `SignalNetwork.announce/1`. Only the outer surface changes.
+
+## The Code
+
+The channel bridge and join path live in:
+
+- [`lib/signal_network_channel_bridge.ex`](./lib/signal_network_channel_bridge.ex)
+- [`lib/signal_network_operator_channel.ex`](./lib/signal_network_operator_channel.ex)
+- [`lib/signal_network_user_socket.ex`](./lib/signal_network_user_socket.ex)
+- [`test/signal_network_test.exs`](./test/signal_network_test.exs)
+
+The join callback sends the current state immediately:
+
+```elixir
+def handle_info(:after_join, socket) do
+  push(socket, "snapshot", %{latest_by_topic: SignalNetwork.dashboard_snapshot()})
+  {:noreply, socket}
+end
+```
+
+That gives a newly connected operator context before the next live event arrives.
+
+## Trying It Out
+
+Run the lesson:
+
+```bash
+cd 04_channels_under_glass
+mix deps.get
+mix test
+iex -S mix
+```
+
+Then paste:
+
+```elixir
+SignalNetwork.reset_runtime!()
+
+SignalNetwork.announce(%{
+  source: :trade_authority,
+  topic: "trade:shipment-17",
+  event: :shipment_delayed,
+  payload: %{status: "delayed", reason: "solar winds", minutes: 42}
+})
+
+%{
+  channel_topic: SignalNetwork.channel_topic(),
+  live_state: SignalNetwork.dashboard_snapshot()["trade:shipment-17"]
+}
+```
+
+The test suite is the best place to watch the actual channel push, because it joins the socket and asserts the `"snapshot"` and `"signal"` events directly.
+
+## What the Tests Prove
+
+The tests prove that:
+
+- earlier polling behavior still exists
+- a channel join receives the current snapshot
+- a later broadcast becomes a pushed `"signal"` event
+
+The operator dashboard is no longer a poller. It is a subscriber with a websocket boundary.
+
+## Why This Matters
+
+Real-time UI is not a separate architecture from PubSub. It is one more consumer, with tighter latency expectations and a network boundary in front of it.
+
+Once that clicks, channels feel less mysterious. They are simply a way to keep listening from outside the server.
+
+## PubSub Takeaway
+
+Channels are how PubSub reaches people.
+
+The wire stays event-driven all the way to the client edge.
+
+## What Still Hurts
+
+A connected dashboard still does not know who else is in the room or which systems are online.
+
+The wire is live, but the network has no coordination surface yet.
+
+## Next Lesson
+
+In lesson 5, mission control learns operator and system presence so the network can see who is actually on the wire.

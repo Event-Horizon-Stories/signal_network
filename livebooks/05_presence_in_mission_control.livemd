@@ -1,0 +1,40 @@
+# Lesson 05 Livebook: Presence In Mission Control
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../05_presence_in_mission_control"}
+])
+```
+
+## Mark One System Online
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.track_system("mars-colony-core", %{kind: "life-support", online: true})
+```
+
+## Inspect Presence State
+
+```elixir
+%{
+  systems: SignalNetwork.systems_online(),
+  operators: SignalNetwork.operators_online()
+}
+```
+
+## Compare Presence To Live Signals
+
+```elixir
+SignalNetwork.announce(%{
+  source: :mars_colony,
+  topic: "alerts:mars",
+  event: :oxygen_low,
+  payload: %{zone: "hab-3", percent: 18},
+  priority: :high
+})
+
+%{
+  live_alert: SignalNetwork.dashboard_snapshot()["alerts:mars"],
+  systems: SignalNetwork.systems_online()
+}
+```

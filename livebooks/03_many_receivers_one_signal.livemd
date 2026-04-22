@@ -1,0 +1,43 @@
+# Lesson 03 Livebook: Many Receivers, One Signal
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../03_many_receivers_one_signal"}
+])
+```
+
+## Start Clean
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.listen("trade:shipment-17")
+```
+
+## Emit One Delay
+
+```elixir
+signal =
+  SignalNetwork.announce(%{
+    source: :trade_authority,
+    topic: "trade:shipment-17",
+    event: :shipment_delayed,
+    payload: %{status: "delayed", reason: "solar winds", minutes: 42}
+  })
+
+receive do
+  message -> message
+after
+  200 -> :timeout
+end
+```
+
+## Compare Three Reactions
+
+```elixir
+%{
+  dashboard: SignalNetwork.dashboard_snapshot()["trade:shipment-17"],
+  alerts: SignalNetwork.alerts(),
+  analytics: SignalNetwork.analytics(),
+  signal: signal
+}
+```

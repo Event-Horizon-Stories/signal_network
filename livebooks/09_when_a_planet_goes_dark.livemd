@@ -1,0 +1,35 @@
+# Lesson 09 Livebook: When A Planet Goes Dark
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../09_when_a_planet_goes_dark"}
+])
+```
+
+## Emit A Broken Sequence
+
+```elixir
+SignalNetwork.reset_runtime!()
+
+for {sequence, percent} <- [{1, 94}, {2, 92}, {5, 81}] do
+  SignalNetwork.announce(%{
+    source: :mars_colony,
+    topic: "telemetry:mars",
+    event: :oxygen_level,
+    payload: %{percent: percent},
+    sequence: sequence
+  })
+end
+```
+
+## Inspect The Gap
+
+```elixir
+SignalNetwork.gaps()
+```
+
+## Compare Missing History To The Live Tip
+
+```elixir
+SignalNetwork.dashboard_snapshot()["telemetry:mars"]
+```

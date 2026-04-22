@@ -1,0 +1,34 @@
+# Lesson 04 Livebook: Channels Under Glass
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../04_channels_under_glass"}
+])
+```
+
+## Reset The Runtime
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.channel_topic()
+```
+
+## Emit A Signal The Channel Would Push
+
+```elixir
+SignalNetwork.announce(%{
+  source: :trade_authority,
+  topic: "trade:shipment-17",
+  event: :shipment_delayed,
+  payload: %{status: "delayed", reason: "solar winds", minutes: 42}
+})
+```
+
+## Inspect The Snapshot The Channel Sends First
+
+```elixir
+%{
+  channel_topic: SignalNetwork.channel_topic(),
+  latest_by_topic: SignalNetwork.dashboard_snapshot()
+}
+```

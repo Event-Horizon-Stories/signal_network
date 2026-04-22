@@ -1,0 +1,134 @@
+# Lesson 03: Many Receivers, One Signal
+
+One delayed shipment is enough to light three different consoles.
+
+Mission control wants to see the status change. Alerting wants to notify operators. Analytics wants to count the incident. None of those consumers should need their own custom producer.
+
+Interactive companion: [`../livebooks/03_many_receivers_one_signal.livemd`](../livebooks/03_many_receivers_one_signal.livemd)
+
+## What You'll Learn
+
+- how PubSub fan-out lets one event drive many reactions
+- how to keep multiple consumers independent from one another
+- how to add new subscribers without changing the producer API
+- how to preserve earlier polling and live-projection behavior while the network grows
+
+## The Story
+
+A shipment bound for Deimos slows under solar winds.
+
+That single fact matters in different ways:
+
+- the control room wants the latest status
+- the alert desk wants a notification
+- analytics wants to count the delay
+
+The network should not have to know which of those reactions will occur. It should only announce that the shipment is delayed.
+
+## The PubSub Concept
+
+This chapter teaches fan-out.
+
+In PubSub, one broadcast can wake up any number of subscribers. The producer does not branch manually into dashboard code, alert code, and analytics code. It emits one event, and the topic does the distribution work.
+
+That matters because it keeps the producer stable while the rest of the system evolves.
+
+## What We're Building
+
+This lesson keeps the control room from chapter 2 and adds:
+
+- `SignalNetwork.AlertSink`
+- `SignalNetwork.AnalyticsSink`
+- top-level helpers for reading alerts and analytics counters
+
+The producer still only calls `SignalNetwork.announce/1`.
+
+## The Code
+
+The fan-out layer lives in:
+
+- [`lib/signal_network_alert_sink.ex`](./lib/signal_network_alert_sink.ex)
+- [`lib/signal_network_analytics_sink.ex`](./lib/signal_network_analytics_sink.ex)
+- [`lib/signal_network.ex`](./lib/signal_network.ex)
+
+The analytics sink shows the pattern clearly:
+
+```elixir
+def handle_info(%Signal{} = signal, state) do
+  {:noreply, Map.update(state, signal.event, 1, &(&1 + 1))}
+end
+```
+
+The sink does not care who emitted the event. It only cares that it arrived.
+
+## Trying It Out
+
+Run the lesson:
+
+```bash
+cd 03_many_receivers_one_signal
+mix deps.get
+mix test
+iex -S mix
+```
+
+Then paste:
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.listen("trade:shipment-17")
+
+signal =
+  SignalNetwork.announce(%{
+    source: :trade_authority,
+    topic: "trade:shipment-17",
+    event: :shipment_delayed,
+    payload: %{status: "delayed", reason: "solar winds", minutes: 42}
+  })
+
+receive do
+  _message -> :ok
+after
+  200 -> :timeout
+end
+
+%{
+  control_room: SignalNetwork.dashboard_snapshot()["trade:shipment-17"],
+  alerts: SignalNetwork.alerts(),
+  analytics: SignalNetwork.analytics(),
+  signal: signal
+}
+```
+
+## What the Tests Prove
+
+The tests prove that one shipment delay:
+
+- reaches a direct subscriber
+- updates the control-room projection
+- lands in the alert sink
+- increments the analytics counter
+
+No producer branching is required.
+
+## Why This Matters
+
+Fan-out is where PubSub starts to feel architectural instead of merely convenient.
+
+Once many consumers can react independently, you can add new behavior without reopening the producer every time.
+
+## PubSub Takeaway
+
+A producer should emit one fact once.
+
+If multiple reactions are needed, topics are where that multiplicity belongs.
+
+## What Still Hurts
+
+Operators still do not have a real client surface.
+
+The control room is live inside the server, but there is still no dashboard connection that can join once and receive pushes over time.
+
+## Next Lesson
+
+In lesson 4, operators join a Phoenix Channel and the control room starts pushing updates over a real-time client connection.

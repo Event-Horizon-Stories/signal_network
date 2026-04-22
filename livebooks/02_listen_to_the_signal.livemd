@@ -1,0 +1,47 @@
+# Lesson 02 Livebook: Listen To The Signal
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../02_listen_to_the_signal"}
+])
+```
+
+## Subscribe To One Topic
+
+```elixir
+SignalNetwork.reset_runtime!()
+SignalNetwork.listen("alerts:mars")
+```
+
+## Broadcast One Signal
+
+```elixir
+signal =
+  SignalNetwork.announce(%{
+    source: :mars_colony,
+    topic: "alerts:mars",
+    event: :reactor_unstable,
+    payload: %{sector: "reactor-ring", variance: 12},
+    priority: :high
+  })
+
+received =
+  receive do
+    message -> message
+  after
+    200 -> :timeout
+  end
+
+%{sent: signal.event, received: received.event}
+```
+
+## Compare The Live Projection To Polling
+
+```elixir
+story = SignalNetwork.bootstrap_story!()
+
+%{
+  stale_alert: story.stale_snapshot.latest_by_topic["alerts:mars"],
+  live_alert: SignalNetwork.dashboard_snapshot()["alerts:mars"]
+}
+```

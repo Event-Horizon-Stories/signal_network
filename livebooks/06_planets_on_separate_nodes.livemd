@@ -1,0 +1,45 @@
+# Lesson 06 Livebook: Planets On Separate Nodes
+
+```elixir
+Mix.install([
+  {:signal_network, path: "../06_planets_on_separate_nodes"}
+])
+```
+
+## Reset The Network
+
+```elixir
+SignalNetwork.reset_runtime!()
+```
+
+## Emit From Mars
+
+```elixir
+SignalNetwork.announce_from_planet(:mars, %{
+  source: :mars_colony,
+  topic: "telemetry:mars",
+  event: :energy_level,
+  payload: %{percent: 68}
+})
+
+Process.sleep(20)
+SignalNetwork.dashboard_snapshot()["telemetry:mars"]
+```
+
+## Compare Planets
+
+```elixir
+SignalNetwork.announce_from_planet(:deimos, %{
+  source: :deimos_station,
+  topic: "alerts:deimos",
+  event: :dock_pressure_drop,
+  payload: %{sector: "dock-4", delta: 11}
+})
+
+Process.sleep(20)
+
+%{
+  mars: SignalNetwork.dashboard_snapshot()["telemetry:mars"],
+  deimos: SignalNetwork.dashboard_snapshot()["alerts:deimos"]
+}
+```
