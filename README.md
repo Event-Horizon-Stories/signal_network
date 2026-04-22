@@ -1,6 +1,10 @@
 # signal_network
 
-`signal_network` teaches PubSub by following a network that never waits to be asked. Mars habitats, trade relays, orbital ships, and mission-control consoles all live inside the same fragile universe. Signals move first. Every other part of the system survives by listening.
+`signal_network` teaches PubSub by following a network that feels alive before it feels abstract.
+
+Across Mars habitats, drifting ships, trade relays, and mission-control consoles, nothing sits still long enough to be politely requested. Oxygen levels dip. Reactors grow unstable. Shipments stall in radiation and wind. Operators sign on, vanish, and hand the room to someone else. The system does not pause so a dashboard can catch up. It keeps speaking.
+
+That is the mental shift this series is built around. PubSub is not introduced here as a messaging primitive in isolation. It is introduced as the natural shape of a world where state moves through announcements, reactions, and live coordination. Every lesson takes the same `SignalNetwork` application one step further into that reality.
 
 ## Interactive Companions
 

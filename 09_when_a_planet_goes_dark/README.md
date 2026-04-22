@@ -2,6 +2,8 @@
 
 Here the wire tells the truth about its own limits.
 
+Up to this point, the network has learned how to listen, fan out, push to clients, survive overload, and speak with clearer urgency. None of that makes the wire durable. The harshest lesson in the series is not that PubSub is weak. It is that PubSub is honest about what it is for.
+
 A reconnecting planet can prove that something was missed. It cannot, by PubSub alone, recover what those missed signals were.
 
 Interactive companion: [`../livebooks/09_when_a_planet_goes_dark.livemd`](../livebooks/09_when_a_planet_goes_dark.livemd)
@@ -15,11 +17,11 @@ Interactive companion: [`../livebooks/09_when_a_planet_goes_dark.livemd`](../liv
 
 ## The Story
 
-Mars falls quiet.
+Mars falls quiet. Not gracefully, not with a tidy shutdown event, but with the kind of absence that turns every healthy signal around it into a sharper accusation.
 
-When it returns, the next telemetry signal carries sequence `5`. Mission control remembers seeing `2`. That is enough to know the network missed `3` and `4`.
+When it returns, the next telemetry signal carries sequence `5`. Mission control remembers seeing `2`. That is enough to know the network missed `3` and `4`. The shape of the loss becomes visible the moment the source speaks again.
 
-What it cannot do is recover them.
+What the network still cannot do is recover those missing messages. It can measure the wound. It cannot yet heal it.
 
 ## The PubSub Concept
 

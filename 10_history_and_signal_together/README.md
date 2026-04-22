@@ -7,6 +7,8 @@ The network is finally complete enough to answer both operational questions:
 
 Live delivery answers the first. History answers the second.
 
+This final chapter matters because the series has spent nine lessons refusing to blur those responsibilities together. The wire has been allowed to be fast, immediate, and forgetful. Now it finally meets the thing that can remember what it was never designed to keep.
+
 Interactive companion: [`../livebooks/10_history_and_signal_together.livemd`](../livebooks/10_history_and_signal_together.livemd)
 
 ## What You'll Learn
@@ -20,7 +22,9 @@ Interactive companion: [`../livebooks/10_history_and_signal_together.livemd`](..
 
 Mars returns to the wire after a dark stretch.
 
-Mission control already knows sequences `3` and `4` were missed. This time, though, those signals were written to a journal even while the live subscriber was cut off. The wire still did what wires do: it delivered only what was connected. The journal did what history does: it kept the record long enough to recover it.
+Mission control already knows sequences `3` and `4` were missed. That knowledge alone was painful in the previous chapter, because it proved loss without offering relief. This time the story changes. While the live subscriber was cut off, the missing signals were still written into a journal. The wire kept doing what wires do: it delivered only to the listeners that were present. The journal did what history does: it kept faith with events that deserved to outlive the moment they first occurred.
+
+That is the final movement of the series. The network does not stop being live. It stops pretending that live is enough.
 
 ## The PubSub Concept
 

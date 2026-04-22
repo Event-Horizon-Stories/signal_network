@@ -2,6 +2,8 @@
 
 Mission control finally gets a real viewing window.
 
+Up to now the live network has mostly been something the BEAM could feel from the inside. Signals were moving, sinks were reacting, projections were changing, but the human edge of the story was still standing outside the glass. This chapter opens that glass.
+
 Operators do not refresh the dashboard anymore. They join once, and the network pushes changes as they happen.
 
 Interactive companion: [`../livebooks/04_channels_under_glass.livemd`](../livebooks/04_channels_under_glass.livemd)
@@ -15,11 +17,11 @@ Interactive companion: [`../livebooks/04_channels_under_glass.livemd`](../livebo
 
 ## The Story
 
-The control room is alive now, but only inside the BEAM.
+The control room is alive now, but only inside the BEAM. Processes can hear the signal. Internal projections can stay current. That is useful, but it is not yet a working operations room.
 
-That is not enough. Operators need a surface they can keep open while signals fly. They need the current picture when they join, and then they need the wire to stay hot without another request cycle.
+Operators need a surface they can keep open while signals fly. They need the current picture the moment they enter the room, not after another request cycle. They need the next alert to strike the screen as soon as it crosses the wire.
 
-So the network adds a channel under glass. The bus stays the same. The audience changes.
+So the network adds a channel under glass. The bus stays the same. The audience changes. The story finally reaches the people who have to live inside it.
 
 ## The PubSub Concept
 

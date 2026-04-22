@@ -2,6 +2,8 @@
 
 The network is alive enough to be in danger now.
 
+A quiet system can afford naive honesty. It can pass along every small fact and trust that nothing important will be buried. A living system under pressure loses that luxury. Once the wire starts filling with noise, survival depends on deciding what deserves space.
+
 When a solar storm starts spraying low-value chatter across the wire, the control room needs a way to keep breathing without pretending every signal deserves the same path.
 
 Interactive companion: [`../livebooks/07_solar_storm_backpressure.livemd`](../livebooks/07_solar_storm_backpressure.livemd)
@@ -15,9 +17,11 @@ Interactive companion: [`../livebooks/07_solar_storm_backpressure.livemd`](../li
 
 ## The Story
 
-The storm is not subtle.
+The storm is not subtle. It arrives as a flood of technically accurate, operationally distracting speech. Ships start pinging constantly. Trade updates repeat. Small state changes ripple faster than anyone can interpret them. The bus begins to fill with messages that are true, but not equally worth hearing.
 
-Ships start pinging constantly. Trade updates repeat. The bus fills with chatter that is technically true and operationally useless at that moment. Meanwhile, the signal that matters most is the one the network must not lose: a reactor drifting toward failure.
+Meanwhile, the signal that matters most is the one the network must not lose: a reactor drifting toward failure.
+
+This chapter introduces pressure into the system on purpose so the filtering policy has something real to protect against.
 
 ## The PubSub Concept
 

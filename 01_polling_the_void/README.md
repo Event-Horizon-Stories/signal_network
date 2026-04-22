@@ -2,6 +2,8 @@
 
 Mission control begins in the oldest possible posture: ask every source what the world looks like right now, then ask again a moment later.
 
+At first that sounds reasonable. A dashboard wants the latest state, so it makes a request and waits for an answer. But this network does not live in one room. Mars is speaking from one horizon, the trade authority from another, and ships in transit from somewhere in between. By the time the answer has been assembled, the universe has already had another chance to change.
+
 The answer is never wrong for long. It is simply late.
 
 Interactive companion: [`../livebooks/01_polling_the_void.livemd`](../livebooks/01_polling_the_void.livemd)
@@ -15,13 +17,15 @@ Interactive companion: [`../livebooks/01_polling_the_void.livemd`](../livebooks/
 
 ## The Story
 
-Mars habitat telemetry is drifting in from one side of the system. A shipment to Deimos has already left dock. An orbital ship has checked in.
+The first view of the network is quiet enough to feel manageable. Mars habitat telemetry is drifting in from one side of the system. A shipment to Deimos has already left dock. An orbital ship has checked in and marked itself present on the wire. No alarms are screaming yet. Nothing looks dramatic.
 
-Mission control wants one answer:
+That calm is exactly what makes the old approach seductive.
 
-What is the current state?
+Mission control wants one answer: what is the current state?
 
-The dashboard can get that answer, but only by walking the network source by source. It reads Mars. It reads the trade authority. It reads the ship. Then it freezes that answer into a snapshot that starts aging immediately.
+The dashboard can produce that answer, but only by walking the network source by source. It reads Mars. It reads the trade authority. It reads the ship. It gathers each fragment into a single picture and calls that picture current. Then, while the dashboard is admiring its own answer, the universe gets another chance to move.
+
+This chapter lets that lag become visible before we try to fix it.
 
 ## The PubSub Concept
 

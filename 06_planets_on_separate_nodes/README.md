@@ -2,7 +2,7 @@
 
 Now the network starts to feel wide.
 
-Mars should be able to keep speaking even if Deimos stumbles. Deimos should still matter even if Mars goes dark. That is the moment when one shared bus stops being enough as a teaching model.
+Until this point, the signal network has still felt close enough to imagine as one operational space. That illusion breaks once different worlds begin speaking with their own local rhythm. Mars should be able to keep speaking even if Deimos stumbles. Deimos should still matter even if Mars goes dark. That is the moment when one shared bus stops being enough as a teaching model.
 
 Interactive companion: [`../livebooks/06_planets_on_separate_nodes.livemd`](../livebooks/06_planets_on_separate_nodes.livemd)
 
@@ -15,11 +15,11 @@ Interactive companion: [`../livebooks/06_planets_on_separate_nodes.livemd`](../l
 
 ## The Story
 
-Signals no longer feel like they all originate from the same room.
+Signals no longer feel like they all originate from the same room, because they do not. Mars has its own local machinery, its own failures, its own timing. Deimos has another. Their messages still need to reach mission control, but they should arrive there as travelers, not as artifacts of one collapsed simulation.
 
 Mars emits from its own local bus. Deimos emits from another. The control room still wants one live picture, but it should not need a direct line into every device on every world.
 
-So each planet gets a relay.
+So each planet gets a relay. The network grows a backbone instead of a shortcut.
 
 ## The PubSub Concept
 

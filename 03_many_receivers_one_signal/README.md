@@ -2,7 +2,7 @@
 
 One delayed shipment is enough to light three different consoles.
 
-Mission control wants to see the status change. Alerting wants to notify operators. Analytics wants to count the incident. None of those consumers should need their own custom producer.
+That is when PubSub starts to feel bigger than convenience. A single event crosses the wire, and three different parts of the system lean toward it for different reasons. Mission control wants visibility. Alerting wants urgency. Analytics wants memory. The producer should not have to split itself three ways just because the consequences travel farther than the source.
 
 Interactive companion: [`../livebooks/03_many_receivers_one_signal.livemd`](../livebooks/03_many_receivers_one_signal.livemd)
 
@@ -15,7 +15,7 @@ Interactive companion: [`../livebooks/03_many_receivers_one_signal.livemd`](../l
 
 ## The Story
 
-A shipment bound for Deimos slows under solar winds.
+A shipment bound for Deimos slows under solar winds. It is one delay in one corridor of space, but the moment it becomes real, it begins casting different shadows across the network.
 
 That single fact matters in different ways:
 
@@ -23,7 +23,9 @@ That single fact matters in different ways:
 - the alert desk wants a notification
 - analytics wants to count the delay
 
-The network should not have to know which of those reactions will occur. It should only announce that the shipment is delayed.
+The network should not have to know which of those reactions will occur ahead of time. It should only announce that the shipment is delayed and let the rest of the system decide what that fact means in its own domain.
+
+This is where the bus starts feeling like shared infrastructure rather than a helper function.
 
 ## The PubSub Concept
 
