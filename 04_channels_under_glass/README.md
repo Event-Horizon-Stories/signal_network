@@ -2,13 +2,13 @@
 
 Mission control finally gets a real viewing window.
 
-Up to now the live network has mostly been something the BEAM could feel from the inside. Signals were moving, sinks were reacting, projections were changing, but the human edge of the story was still standing outside the glass. This chapter opens that glass.
+Up to now the live network has mostly been something the BEAM could feel from the inside. Signals were moving, sinks were reacting, projections were changing, but the human edge of the story was still standing outside the glass. Here, that glass opens.
 
 Operators do not refresh the dashboard anymore. They join once, and the network pushes changes as they happen.
 
 Interactive companion: [`../livebooks/04_channels_under_glass.livemd`](../livebooks/04_channels_under_glass.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how Phoenix Channels turn server-side PubSub updates into client pushes
 - how to join a topic-based operator feed
@@ -23,7 +23,7 @@ Operators need a surface they can keep open while signals fly. They need the cur
 
 So the network adds a channel under glass. The bus stays the same. The audience changes. The story finally reaches the people who have to live inside it.
 
-## The PubSub Concept
+## Under The Hood
 
 Phoenix Channels are not a different distribution model from PubSub. They are a client-facing edge built on top of it.
 
@@ -36,9 +36,9 @@ In this lesson:
 
 That is the shape you want to recognize: PubSub inside, channel at the boundary.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps everything from chapter 3 and adds:
+Everything from the earlier network stays in place, and the client edge adds:
 
 - `SignalNetwork.Web.Endpoint`
 - `SignalNetwork.Web.UserSocket`
@@ -69,7 +69,7 @@ That gives a newly connected operator context before the next live event arrives
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 04_channels_under_glass
@@ -114,7 +114,7 @@ Real-time UI is not a separate architecture from PubSub. It is one more consumer
 
 Once that clicks, channels feel less mysterious. They are simply a way to keep listening from outside the server.
 
-## PubSub Takeaway
+## What Holds
 
 Channels are how PubSub reaches people.
 
@@ -126,6 +126,6 @@ A connected dashboard still does not know who else is in the room or which syste
 
 The wire is live, but the network has no coordination surface yet.
 
-## Next Lesson
+## Next Shift
 
-In lesson 5, mission control learns operator and system presence so the network can see who is actually on the wire.
+Next, mission control learns operator and system presence so the network can see who is actually on the wire.

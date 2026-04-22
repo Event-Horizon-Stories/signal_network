@@ -6,7 +6,7 @@ Until this point, the signal network has still felt close enough to imagine as o
 
 Interactive companion: [`../livebooks/06_planets_on_separate_nodes.livemd`](../livebooks/06_planets_on_separate_nodes.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to model planet-local emission before relaying into a shared network bus
 - how clustered propagation differs from a single-node mental model
@@ -21,9 +21,9 @@ Mars emits from its own local bus. Deimos emits from another. The control room s
 
 So each planet gets a relay. The network grows a backbone instead of a shortcut.
 
-## The PubSub Concept
+## Under The Hood
 
-This chapter teaches clustered propagation in a form you can inspect directly inside one lesson.
+Clustered propagation becomes visible here in a form you can inspect directly.
 
 Each planet has:
 
@@ -33,9 +33,9 @@ Each planet has:
 
 The consumers above that layer do not care where the signal originated. They only care that it made it onto the shared fabric.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps chapters 1 through 5 intact and adds:
+The earlier network stays intact, and the topology adds:
 
 - two planet-local PubSub servers
 - `SignalNetwork.Network.PlanetRelay`
@@ -64,7 +64,7 @@ The shared network stays consistent even though signals begin locally.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 06_planets_on_separate_nodes
@@ -108,7 +108,7 @@ Distribution changes how you think about failure.
 
 The question is no longer only whether a function works. The question becomes whether a region of the network can fail without collapsing the rest of the signal path.
 
-## PubSub Takeaway
+## What Holds
 
 Clustering is PubSub plus topology.
 
@@ -120,6 +120,6 @@ A wide network can still drown itself.
 
 If a solar storm sprays low-value chatter across every bus, the control room will still try to swallow it all.
 
-## Next Lesson
+## Next Shift
 
-In lesson 7, a storm gate starts shedding low-priority traffic so the shared bus can survive overload.
+Next, a storm gate starts shedding low-priority traffic so the shared bus can survive overload.

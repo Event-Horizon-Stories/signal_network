@@ -8,7 +8,7 @@ The answer is never wrong for long. It is simply late.
 
 Interactive companion: [`../livebooks/01_polling_the_void.livemd`](../livebooks/01_polling_the_void.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to model a network as an append-only signal history
 - how to reduce that history into a point-in-time dashboard snapshot
@@ -25,11 +25,11 @@ Mission control wants one answer: what is the current state?
 
 The dashboard can produce that answer, but only by walking the network source by source. It reads Mars. It reads the trade authority. It reads the ship. It gathers each fragment into a single picture and calls that picture current. Then, while the dashboard is admiring its own answer, the universe gets another chance to move.
 
-This chapter lets that lag become visible before we try to fix it.
+Here, that lag becomes visible before anything tries to fix it.
 
-## The PubSub Concept
+## Under The Hood
 
-The first PubSub lesson is that polling is the shape PubSub replaces.
+Polling is the shape PubSub is about to replace.
 
 There is no subscription here yet. The dashboard calls `SignalNetwork.poll_dashboard/2`, and that function asks the world to reread every source before it can return a `SignalNetwork.Signals.Snapshot`.
 
@@ -41,9 +41,9 @@ That gives us a clean baseline:
 
 In the next chapter, the signal struct survives. The request path does not.
 
-## What We're Building
+## Network Changes
 
-This lesson creates:
+The network begins with:
 
 - a `SignalNetwork.Signals.Signal` struct for the events crossing the universe
 - a `SignalNetwork.Signals.World` struct that stores signal history
@@ -52,7 +52,7 @@ This lesson creates:
 
 ## The Code
 
-The lesson lives in:
+The code lives in:
 
 - [`lib/signal_network.ex`](./lib/signal_network.ex)
 - [`lib/signals/signal.ex`](./lib/signals/signal.ex)
@@ -82,7 +82,7 @@ The dashboard gets a useful answer, but it pays one read per source every time.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 01_polling_the_void
@@ -118,13 +118,13 @@ That second point matters. Polling cost is tied to topology, not to change.
 
 REST-trained intuition says the dashboard should ask for what it needs.
 
-This chapter shows the cost of that instinct in a signal-heavy system. The control room is forced to do repeated work even when the world is quiet, and it is still behind the moment the answer is returned.
+This shows the cost of that instinct in a signal-heavy system. The control room is forced to do repeated work even when the world is quiet, and it is still behind the moment the answer is returned.
 
-## PubSub Takeaway
+## What Holds
 
 Before PubSub can feel necessary, polling has to feel inadequate.
 
-This chapter gives you the baseline failure: the dashboard asks, pays, and still falls behind.
+This is the baseline failure: the dashboard asks, pays, and still falls behind.
 
 ## What Still Hurts
 
@@ -132,6 +132,6 @@ Nothing announces itself yet.
 
 The dashboard only changes when someone remembers to poll again, and every poll rereads the same universe from scratch.
 
-## Next Lesson
+## Next Shift
 
-In lesson 2, the network stops waiting for requests and starts broadcasting signals over Phoenix PubSub.
+Next, the network stops waiting for requests and starts broadcasting signals over Phoenix PubSub.

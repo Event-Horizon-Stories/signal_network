@@ -8,7 +8,7 @@ Mission control needs to know which operators are online, and which systems are 
 
 Interactive companion: [`../livebooks/05_presence_in_mission_control.livemd`](../livebooks/05_presence_in_mission_control.livemd)
 
-## What You'll Learn
+## What Changes
 
 - how to add Phoenix Presence to a PubSub-backed channel
 - how to track both human operators and connected systems
@@ -21,9 +21,9 @@ Signals are arriving fast enough now that silence itself becomes information.
 
 If a reactor monitor drops off the wire, that matters before anyone reads the next metric. If the night-shift operator leaves mission control and no one else is present to take the room, that matters too. In a living network, absence has shape. Presence gives that shape a place to be recorded.
 
-This chapter turns the room itself into part of the system model.
+This is where the room itself becomes part of the system model.
 
-## The PubSub Concept
+## Under The Hood
 
 Presence is built on PubSub, but it solves a different problem from ordinary event fan-out.
 
@@ -39,9 +39,9 @@ Presence says:
 
 That distinction matters. Presence is not one more event type. It is shared membership state maintained over the same messaging fabric.
 
-## What We're Building
+## Network Changes
 
-This lesson keeps the channel from chapter 4 and adds:
+The channel stays, and the network adds:
 
 - `SignalNetwork.Web.Presence`
 - operator tracking on channel join
@@ -72,7 +72,7 @@ The channel becomes both a live event stream and a place with occupants.
 
 ## Trying It Out
 
-Run the lesson:
+Run the chapter:
 
 ```bash
 cd 05_presence_in_mission_control
@@ -112,7 +112,7 @@ Operational software is not just about data freshness. It is also about coordina
 
 Knowing who is online, and whether the right systems are still connected, changes how humans interpret the same stream of events.
 
-## PubSub Takeaway
+## What Holds
 
 Presence is membership state built on top of PubSub.
 
@@ -124,6 +124,6 @@ Everything still lives on one shared bus.
 
 The story says signals come from many worlds, but the code has not made that distribution pressure visible yet.
 
-## Next Lesson
+## Next Shift
 
-In lesson 6, planets get their own local buses and relay into the wider network so node-level failure becomes part of the story.
+Next, planets get their own local buses and relay into the wider network so node-level failure becomes part of the story.
