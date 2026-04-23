@@ -105,16 +105,19 @@ For the Livebook companions, use the repo-root helper scripts:
 
 ## Timeline
 
-`signal_network` follows the early colony era of
-[`mars_colony_otp`](https://github.com/Event-Horizon-Stories/mars_colony_otp).
+`signal_network` follows the early colony and fleet-autonomy eras of
+[`mars_colony_otp`](https://github.com/Event-Horizon-Stories/mars_colony_otp)
+and [`helios_fleet`](https://github.com/Event-Horizon-Stories/helios_fleet).
 
 It sits in the period when Mars habitats, relays, ships, and mission control start
-behaving like one live interplanetary system, before the later trade authority,
-wormhole-era timeline conflicts, and Horizon Engine inquiry.
+behaving like one live interplanetary system, before the later dispatch office,
+trade authority, wormhole-era timeline conflicts, and Horizon Engine inquiry.
 
 ## Related Stories
 
 - Previous era: [`mars_colony_otp`](https://github.com/Event-Horizon-Stories/mars_colony_otp)
+- Previous fleet era: [`helios_fleet`](https://github.com/Event-Horizon-Stories/helios_fleet)
+- Next dispatch era: [`orbital_dispatch`](https://github.com/Event-Horizon-Stories/orbital_dispatch)
 - Later bureaucracy: [`galactic_trade_authority`](https://github.com/Event-Horizon-Stories/galactic_trade_authority)
 - Later temporal crisis: [`wormhole_protocol`](https://github.com/Event-Horizon-Stories/wormhole_protocol)
 - Far-future inquiry: [`horizon_engine`](https://github.com/Event-Horizon-Stories/horizon_engine)
