@@ -138,4 +138,4 @@ If a planet disappears from the wire and returns later, PubSub alone has no memo
 
 ## Next Shift
 
-Next, a reconnect reveals missing sequence gaps and makes PubSub’s lack of persistence impossible to ignore.
+In [`09_when_a_planet_goes_dark`](../09_when_a_planet_goes_dark/README.md), a reconnect reveals missing sequence gaps and makes PubSub’s lack of persistence impossible to ignore.

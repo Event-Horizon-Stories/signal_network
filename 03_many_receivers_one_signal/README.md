@@ -133,4 +133,4 @@ The control room is live inside the server, but there is still no dashboard conn
 
 ## Next Shift
 
-Next, operators join a Phoenix Channel and the control room starts pushing updates over a real-time client connection.
+In [`04_channels_under_glass`](../04_channels_under_glass/README.md), operators join a Phoenix Channel and the control room starts pushing updates over a real-time client connection.

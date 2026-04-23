@@ -122,4 +122,4 @@ If a solar storm sprays low-value chatter across every bus, the control room wil
 
 ## Next Shift
 
-Next, a storm gate starts shedding low-priority traffic so the shared bus can survive overload.
+In [`07_solar_storm_backpressure`](../07_solar_storm_backpressure/README.md), a storm gate starts shedding low-priority traffic so the shared bus can survive overload.
