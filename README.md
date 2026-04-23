@@ -103,6 +103,22 @@ For the Livebook companions, use the repo-root helper scripts:
 ./scripts/livebook.sh server livebooks
 ```
 
+## Timeline
+
+`signal_network` follows the early colony era of
+[`mars_colony_otp`](https://github.com/Event-Horizon-Stories/mars_colony_otp).
+
+It sits in the period when Mars habitats, relays, ships, and mission control start
+behaving like one live interplanetary system, before the later trade authority,
+wormhole-era timeline conflicts, and Horizon Engine inquiry.
+
+## Related Stories
+
+- Previous era: [`mars_colony_otp`](https://github.com/Event-Horizon-Stories/mars_colony_otp)
+- Later bureaucracy: [`galactic_trade_authority`](https://github.com/Event-Horizon-Stories/galactic_trade_authority)
+- Later temporal crisis: [`wormhole_protocol`](https://github.com/Event-Horizon-Stories/wormhole_protocol)
+- Far-future inquiry: [`horizon_engine`](https://github.com/Event-Horizon-Stories/horizon_engine)
+
 ## Start Here
 
 Begin with [`01_polling_the_void`](./01_polling_the_void/README.md).
