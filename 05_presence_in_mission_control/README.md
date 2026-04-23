@@ -126,4 +126,4 @@ The story says signals come from many worlds, but the code has not made that dis
 
 ## Next Shift
 
-Next, planets get their own local buses and relay into the wider network so node-level failure becomes part of the story.
+In [`06_planets_on_separate_nodes`](../06_planets_on_separate_nodes/README.md), planets get their own local buses and relay into the wider network so node-level failure becomes part of the story.

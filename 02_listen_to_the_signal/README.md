@@ -142,4 +142,4 @@ Mission control can hear the signal now, but we still have only one reaction pat
 
 ## Next Shift
 
-Next, one delayed shipment will trigger multiple subscribers at once so fan-out becomes visible instead of abstract.
+In [`03_many_receivers_one_signal`](../03_many_receivers_one_signal/README.md), one delayed shipment will trigger multiple subscribers at once so fan-out becomes visible instead of abstract.

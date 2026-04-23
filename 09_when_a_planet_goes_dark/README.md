@@ -129,4 +129,4 @@ The story needs history, not just an admission of loss.
 
 ## Next Shift
 
-Next, a journaled event path joins the live bus so the network can replay what PubSub alone could never recover.
+In [`10_history_and_signal_together`](../10_history_and_signal_together/README.md), a journaled event path joins the live bus so the network can replay what PubSub alone could never recover.

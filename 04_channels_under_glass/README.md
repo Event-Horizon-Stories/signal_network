@@ -128,4 +128,4 @@ The wire is live, but the network has no coordination surface yet.
 
 ## Next Shift
 
-Next, mission control learns operator and system presence so the network can see who is actually on the wire.
+In [`05_presence_in_mission_control`](../05_presence_in_mission_control/README.md), mission control learns operator and system presence so the network can see who is actually on the wire.

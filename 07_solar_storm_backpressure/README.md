@@ -134,4 +134,4 @@ The network needs a clearer language for urgency.
 
 ## Next Shift
 
-Next, signals start traveling on priority feeds as well as domain topics so urgent failures can cut through the network faster.
+In [`08_priority_on_the_wire`](../08_priority_on_the_wire/README.md), signals start traveling on priority feeds as well as domain topics so urgent failures can cut through the network faster.

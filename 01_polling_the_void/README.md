@@ -134,4 +134,4 @@ The dashboard only changes when someone remembers to poll again, and every poll 
 
 ## Next Shift
 
-Next, the network stops waiting for requests and starts broadcasting signals over Phoenix PubSub.
+In [`02_listen_to_the_signal`](../02_listen_to_the_signal/README.md), the network stops waiting for requests and starts broadcasting signals over Phoenix PubSub.
